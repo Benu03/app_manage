@@ -12,7 +12,7 @@
     }
 </style>
 
-<aside class="main-sidebar sidebar-light-blue">
+<aside class="main-sidebar sidebar-light-green">
     <!-- Brand Logo -->
     <a href="{{ route('lobby') }}" class="brand-link py-0 mt-2 ml-2" id="link">
         <img id="logo_wrap" alt="PORTAL SYSTEM" class="brand-image-xl py-1" src="{{ asset('img/logo/logo.png') }}"
@@ -61,10 +61,10 @@
                 <li class="nav-item menu-item mb-0 py-0 {{ $isParentActive ? 'menu-is-opening menu-open' : '' }}"
                     id="navItemx">
                     <a href="{{ in_array(config('static.app_env'), ['development', 'production']) ? config('static.url_puninar_app').$item->menu_url : url($item->menu_url) }}"
-                        class="nav-link text-primary toggle-menu {{ $isParentActive ? 'activex' : '' }}">
-                        <i class="nav-icon material-symbols-rounded" style="font-size: 22px!important;color:#2E308A">{{
+                        class="nav-link text-dark toggle-menu {{ $isParentActive ? 'activex' : '' }}">
+                        <i class="nav-icon material-symbols-rounded" style="font-size: 22px!important;color:#04c441">{{
                             $item->menu_icon }}</i>
-                        <p class="menu-name text-primary" style="font-size: 14px;color:#2E308A;">
+                        <p class="menu-name text-dark" style="font-size: 14px;color:#04c441;">
                             {{ $item->menu_name }}
                         </p>
                         @if (isset($menuTree[$item->id]) && count($menuTree[$item->id]) > 0)
@@ -97,10 +97,10 @@
                             <a href="{{ in_array(config('static.app_env'), ['development', 'production']) ? config('static.url_puninar_app').$subItem->menu_url : url($subItem->menu_url) }}"
                                 class="nav-link text-primary pl-4 {{ $isChildActive ? 'active' : '' }}">
                                 <i class="nav-icon material-symbols-rounded"
-                                    style="font-size: 22px!important;color:#2E308A !important;background-color: #E3EEF0;">
+                                    style="font-size: 22px!important;color:#04c441 !important;background-color: #E3EEF0;">
                                     {{ $subItem->menu_icon }}
                                 </i>
-                                <p class="menu-name text-primary" style="font-size: 14px;color:#2E308A !important;">
+                                <p class="menu-name text-primary" style="font-size: 14px;color:#04c441 !important;">
                                     {{ $subItem->menu_name }}
                                 </p>
                             </a>
