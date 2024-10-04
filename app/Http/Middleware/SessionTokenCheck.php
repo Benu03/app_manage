@@ -56,7 +56,7 @@ class SessionTokenCheck
                 'Content-Type' => 'application/json',
                 'key-service' => $keyPun,
                 'timestamp' => $timestamp
-            ])->post(config('static.url_access_session'), $body);
+            ])->withoutVerifying()->post(config('static.url_access_session'), $body);
     
             $responseSessionData = json_decode($responseSession ,true);
 
@@ -114,7 +114,7 @@ class SessionTokenCheck
             'Content-Type' => 'application/json',
             'key-service' => $keyPun,
             'timestamp' => $timestamp
-        ])->post(config('static.url_access_session'), $body);
+        ])->withoutVerifying()->post(config('static.url_access_session'), $body);
 
         $responseSessionData = json_decode($responseSession ,true);
             
@@ -140,7 +140,7 @@ class SessionTokenCheck
             'Content-Type' => 'application/json',
             'key-service' => $keyPun,
             'timestamp' => $timestamp
-        ])->post(config('static.url_access_module_user'), $body);
+        ])->withoutVerifying()->post(config('static.url_access_module_user'), $body);
 
         $responseModuleData = json_decode($responseModule ,true); 
 
