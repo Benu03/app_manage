@@ -3,7 +3,7 @@
 </form>
 
 <footer class="main-footer text-sm" style="border-radius: 0px !important;">
-    <strong>Copyright &copy; {{ date('Y') }} <a href="#">Puninar Logistics</a>.</strong>
+    <strong>Copyright &copy; {{ date('Y') }} <a href="#">TS3 Indonesia</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0
