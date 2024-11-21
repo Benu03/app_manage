@@ -143,7 +143,7 @@ class AccessController extends Controller
 
         if($response['status'] == 200){
             session()->flush();
-            return redirect(config('static.url_puninar_app_main').'login');
+            return redirect(config('static.url_portal_ts3_main').'login');
         }
 
     }
@@ -152,7 +152,7 @@ class AccessController extends Controller
     public function lobby(Request $request) {
              
             session()->flush();
-            return redirect(config('static.url_puninar_app_main'));
+            return redirect(config('static.url_portal_ts3_main').'/lobby');
 
     }
 
