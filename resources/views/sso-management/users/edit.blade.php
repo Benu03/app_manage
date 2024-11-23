@@ -110,8 +110,8 @@
                             <div class="col-md-11">
                                 <div class="form-group">
                                     <label for="nik" style="font-weight: 400 !important;">NIK<font color="red">*</font></label>
-                                    <input type="text" class="form-control" id="nik" name="nik" value="{{ $user->personal->nik }}">
-                                    <input type="hidden" class="form-control" id="nik_old" name="nik_old" value="{{ $user->personal->nik }}">
+                                    <input type="text" class="form-control" id="nik" name="nik" value="{{ $user->nik }}">
+                                    <input type="hidden" class="form-control" id="nik_old" name="nik_old" value="{{ $user->nik }}">
                                     <span id="nikError" role="alert" class="mb-2" style="color: red;font-size:12px;">
 
                                     </span>
@@ -120,8 +120,8 @@
                             <div class="col-md-11">
                                 <div class="form-group">
                                     <label for="fullname" style="font-weight: 400 !important;">Full Name<font color="red">*</font></label>
-                                    <input type="text" class="form-control" id="fullname" name="fullname" value="{{ $user->personal->fullname }}">
-                                    <input type="hidden" name="id_personal" value="{{ $user->personal->id }}">
+                                    <input type="text" class="form-control" id="fullname" name="fullname" value="{{ $user->fullname }}">
+                                    <input type="hidden" name="id_personal" value="{{ $user->id }}">
                                     <input type="hidden" name="id" value="{{ $user->id }}">
                                     <span id="fullnameError" role="alert" class="mb-2" style="color: red;font-size:12px;">
 
@@ -143,8 +143,8 @@
                                     <label for="phone" style="font-weight: 400 !important;">
                                         Phone Number<font color="red">*</font>
                                     </label>
-                                    <input type="text" class="form-control" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="{{ $user->personal->phone }}">
-                                    <input type="hidden" name="phone_old" value="{{ $user->personal->phone }}">
+                                    <input type="text" class="form-control" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="{{ $user->phone }}">
+                                    <input type="hidden" name="phone_old" value="{{ $user->phone }}">
                                     <span id="phoneError" role="alert" class="mb-2" style="color: red;font-size:12px;">
 
                                     </span>
@@ -155,8 +155,8 @@
                             <div class="col-md-11">
                                 <div class="form-group">
                                     <label for="whatsapp" style="font-weight: 400 !important;">Whatsapp Number<font color="red">*</font></label>
-                                    <input type="text" class="form-control" id="whatsapp" name="whatsapp" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="{{ $user->personal->wa_number }}">
-                                    <input type="hidden" name="whatsapp_old" value="{{ $user->personal->wa_number }}">
+                                    <input type="text" class="form-control" id="whatsapp" name="whatsapp" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="{{ $user->wa_number }}">
+                                    <input type="hidden" name="whatsapp_old" value="{{ $user->wa_number }}">
                                     <span id="whatsappError" role="alert" class="mb-2" style="color: red;font-size:12px;"></span>
 
                                     </span>
@@ -165,7 +165,7 @@
                             <div class="col-md-11">
                                 <div class="form-group">
                                     <label for="address" style="font-weight: 400 !important;">Address</label>
-                                    <input type="text" class="form-control" id="address" name="address" value="{{ $user->personal->address }}">
+                                    <input type="text" class="form-control" id="address" name="address" value="{{ $user->address }}">
                                 </div>
                             </div>
                             <div class="col-md-11">
@@ -174,7 +174,7 @@
                                     <select name="entity" id="entity" class="form-control select2" style="width: 100%;">
                                         <option value="" selected>-- Select Entity --</option>
                                         @foreach ($data['entity'] as $item)
-                                            <option value="{{ $item->id }}" {{ $item->id == $user->personal->auth_entity_id ? 'selected' : '' }}>{{ $item->entity }}</option>
+                                            <option value="{{ $item->id }}" {{ $item->id == $user->auth_entity_id ? 'selected' : '' }}>{{ $item->entity }}</option>
                                         @endforeach
                                     </select>
                                     <span id="entityError" role="alert" class="mb-2" style="color: red;font-size:12px;">
@@ -187,7 +187,7 @@
                                     <select name="type" id="type" class="form-control select2" style="width: 100%;">
                                         <option value="" selected>-- Select Type --</option>
                                         @foreach ($data['type'] as $item)
-                                            <option value="{{ $item->id }}" {{ $item->id == $user->personal->auth_type_id ? 'selected' : '' }}>{{ $item->type }}</option>
+                                            <option value="{{ $item->id }}" {{ $item->id == $user->auth_type_id ? 'selected' : '' }}>{{ $item->type }}</option>
                                         @endforeach
                                     </select>
                                     <span id="typeError" role="alert" class="mb-2" style="color: red;font-size:12px;"></span>
@@ -199,7 +199,7 @@
                                     <select name="division" id="division" class="form-control select2" style="width: 100%;">
                                         <option value="">-- Select Division --</option>
                                         @foreach ($data['division'] as $item)
-                                            <option value="{{ $item->id }}" {{ $item->id == $user->personal->auth_mst_division_id ? 'selected' : '' }}>{{ $item->division }}</option>
+                                            <option value="{{ $item->id }}" {{ $item->id == $user->auth_mst_division_id ? 'selected' : '' }}>{{ $item->division }}</option>
                                         @endforeach
                                     </select>
                                     <span id="divisionError" role="alert" class="mb-2" style="color: red;font-size:12px;"></span>
@@ -217,7 +217,7 @@
                                     <select name="department" id="department" class="form-control select2" style="width: 100%;">
                                         <option value="">-- Select Department --</option>
                                         @foreach ($data['department'] as $item)
-                                            <option value="{{ $item->id }}" {{ $item->id == $user->personal->auth_mst_department_id ? 'selected' : '' }}>{{ $item->department }}</option>
+                                            <option value="{{ $item->id }}" {{ $item->id == $user->auth_mst_department_id ? 'selected' : '' }}>{{ $item->department }}</option>
                                         @endforeach
                                     </select>
                                     <span id="departmentError" role="alert" class="mb-2" style="color: red;font-size:12px;"></span>
@@ -231,7 +231,7 @@
                                     <select name="position" id="position" class="form-control select2" style="width: 100%;">
                                         <option value="">-- Select Position --</option>
                                         @foreach ($data['position'] as $item)
-                                            <option value="{{ $item->id }}" {{ $item->id == $user->personal->auth_mst_position_id ? 'selected' : '' }}>{{ $item->position }}</option>
+                                            <option value="{{ $item->id }}" {{ $item->id == $user->auth_mst_position_id ? 'selected' : '' }}>{{ $item->position }}</option>
                                         @endforeach
                                     </select>
                                     <span id="positionError" role="alert" class="mb-2" style="color: red;font-size:12px;"></span>
@@ -262,11 +262,11 @@
                                     <label for="validity" style="font-weight: 400 !important;">Validity Period<span style="color: red;">*</span></label>
                                     <div class="row">
                                         <div class="ml-2 mr-4">
-                                            <input type="radio" value="Permanent" id="permanen" name="validity" {{ $user->personal->validity_period == 'Permanent' ? 'checked' : '' }}>
+                                            <input type="radio" value="Permanent" id="permanen" name="validity" {{ $user->validity_period == 'Permanent' ? 'checked' : '' }}>
                                             <label for="permanen" style="font-weight: 400 !important;"> Permanen</label>
                                         </div>
                                         <div>
-                                            <input type="radio" value="Limited Period" id="limited" name="validity" {{ $user->personal->validity_period == 'Limited Period' ? 'checked' : '' }}>
+                                            <input type="radio" value="Limited Period" id="limited" name="validity" {{ $user->validity_period == 'Limited Period' ? 'checked' : '' }}>
                                             <label for="limited" style="font-weight: 400 !important;"> Limited Period</label>
                                         </div>
                                     </div>
@@ -275,13 +275,13 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="col-md-11" id="validTillInput" style="{{ $user->personal->validity_period != 'Permanent' ? 'display:inline-block' : 'display:none' }}">
+                            <div class="col-md-11" id="validTillInput" style="{{ $user->validity_period != 'Permanent' ? 'display:inline-block' : 'display:none' }}">
                                 <div class="form-group">
                                     <label for="valid_till" style="font-weight: 400 !important;">
                                         Valid Till<font color="red">*</font>
                                     </label>
                                     <div class="input-group date" id="validTillGroup" data-target-input="nearest">
-                                        <input type="text" id="validTill" name="validTill" class="form-control datetimepicker-input" data-target="#validTill" value="{{($user->personal->valid_till) ?\Carbon\Carbon::parse($user->personal->valid_till)->format('d-M-Y'):''}}"/>
+                                        <input type="text" id="validTill" name="validTill" class="form-control datetimepicker-input" data-target="#validTill" value="{{($user->valid_till) ?\Carbon\Carbon::parse($user->valid_till)->format('d-M-Y'):''}}"/>
                                         <div class="input-group-append" data-target="#validTill"
                                             data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i>

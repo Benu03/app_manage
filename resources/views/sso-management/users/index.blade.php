@@ -59,7 +59,7 @@
         </div>
     </div>
     <script>
-        window.Laravel = {!! json_encode([ 'app_env' => config('app.env'),]) !!};
+        window.Laravel = {!! json_encode([ 'app_env' => config('app.env'), 'reverse_proxy' => config('static.reverse_proxy')]) !!};
         var table;
         $(document).ready(function() {
             table = $('#moduleTable').DataTable({
@@ -144,11 +144,12 @@
                     orderable: false,
                     render: function(data, type, row, meta) {
                         var appEnv = window.Laravel.app_env;
-
-                        if (appEnv === 'local') {
+                        var ReverseProxy = window.Laravel.reverse_proxy;
+                        console.log(ReverseProxy);
+                        if (ReverseProxy === false) {
                             return '<a href="/sso-management-users/detail/' + data + '" class="btn btn-sm btn-xs btn-xl"><i class="nav-icon material-symbols-rounded" style="font-size: 22px!important;color:#2E308A">visibility</i></a>';
                         } else {
-                            return '<a href="/4/sso-management-users/detail/' + data + '" class="btn btn-sm btn-xs btn-xl"><i class="nav-icon material-symbols-rounded" style="font-size: 22px!important;color:#2E308A">visibility</i></a>';
+                            return '<a href="/1/sso-management-users/detail/' + data + '" class="btn btn-sm btn-xs btn-xl"><i class="nav-icon material-symbols-rounded" style="font-size: 22px!important;color:#2E308A">visibility</i></a>';
                         }
 
                        

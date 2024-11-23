@@ -285,7 +285,7 @@ class WebManagementController extends Controller
             if ($request->has('module_ids')) {
                 $fileImage = isset($param['image_url']) ? $param['image_url'] : '/default-logo.png';
                 Log::info($fileImage);
-                $urlImagemodule = config('static.url_puninar_app') . 'img/portal-app' . $fileImage;
+                $urlImagemodule = config('static.url_portal_ts3_main') . 'img/portal-app' . $fileImage;
             
                 DB::table('auth.auth_module')->whereIn('id', $request->module_ids)
                     ->update([

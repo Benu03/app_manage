@@ -30,42 +30,10 @@ use App\Livewire\Home;
 
 Route::group(['middleware' => ['session_key']],function(){
 
-    // Route::get('/testdb', function () {
-    //     try {
-    //         DB::connection('sso')->getPdo();
-    //         echo "Connected successfully to: " . DB::connection('sso')->getDatabaseName();
-    //     } catch (\Exception $e) {
-    //         die("Could not connect to the database. Please check your configuration. error:" . $e );
-    //     }
-    // });
-    
-
-    // Route::get('/', [TestController::class, 'tes'])->name('tes');
-    // Route::get('/info', [TestController::class, 'info'])->name('info');
-    // Route::get('/clean', [TestController::class, 'clean'])->name('clean');
-
-    // Route::get('/back', function () {
-    //     return redirect('https://app-dev.puninar.com');
-    // })->name('back');
 
     Route::get('lobby', [AccessController::class, 'lobby'])->name('lobby');
     Route::get('/dashboard', Home::class)->name('home');
     Route::post('logout', [AccessController::class, 'logout'])->name('logout');
-    #App Management - web
-    // Route::get('/app-management-web', [WebManagementController::class, 'index_web'])->name('web-management.index');
-    // Route::get('/app-management-web/create', [WebManagementController::class, 'create_web'])->name('web-management.create');
-    // Route::get('/app-management-web/edit/{id}', [WebManagementController::class, 'edit'])->name('web-management.edit');
-    // Route::post('/app-managemenet/create', [WebManagementController::class, 'web_store'])->name('web-management.store');
-    // Route::post('/app-managemenet/update', [WebManagementController::class, 'web_update'])->name('web-management.update');
-    // Route::get('/app-management-web/get_data', [WebManagementController::class, 'get_data_web'])->name('web-management.get_data');
-
-    // #App Management - mobile
-    // Route::get('/app-management-mobile', [WebManagementController::class, 'index_mobile'])->name('mobile-management.index');
-    // Route::get('/app-management-mobile/create',[WebManagementController::class, 'mobileCreate'])->name('mobile-management.create');
-    // Route::post('/app-management-mobile/create', [WebManagementController::class, 'app_store'])->name('mobile-management.store');
-    // Route::get('/app-management-mobile/edit/{id}', [WebManagementController::class, 'app_edit'])->name('mobile-management.edit');
-    // Route::post('/app-management-mobile/update', [WebManagementController::class, 'app_update'])->name('mobile-management.update');
-    // Route::get('/app-management-mobile/get_data', [WebManagementController::class, 'get_data_app'])->name('mobile-management.get_data');
 
     // #App Management - APK
     Route::get('/sso-management-apk', [SSOManagementController::class, 'apk_show'])->name('apk.index');

@@ -13,8 +13,5 @@ class UserAuth extends Model
     protected $guarded = [];
     public $timestamps = false;
 
-    public function personal()
-    {
-        return $this->hasOne(UserPersonal::class, 'email', 'email');
-    }
+  
 }

@@ -15,8 +15,8 @@
 <aside class="main-sidebar sidebar-light-green">
     <!-- Brand Logo -->
     <a href="{{ route('lobby') }}" class="brand-link py-0 mt-2 ml-2" id="link">
-        <img id="logo_wrap" alt="PORTAL SYSTEM" class="brand-image-xl py-1" src="{{ asset('img/logo/logo.png') }}"
-            style="height:550px !important;">
+        <img id="logo_wrap" alt="APP Manage" class="brand-image-xl py-1" src="{{ asset('img/logo/logo.png') }}"
+            style="height:700px !important;">
     </a>
     <hr>
     <!-- Sidebar -->
@@ -62,7 +62,7 @@
 
                 <li class="nav-item menu-item mb-0 py-0 {{ $isParentActive ? 'menu-is-opening menu-open' : '' }}"
                     id="navItemx">
-                    <a href="{{ in_array(config('static.app_env'), ['development', 'production']) ? config('static.url_puninar_app').$item->menu_url : url($item->menu_url) }}"
+                    <a href="{{ in_array(config('static.app_env'), ['development', 'production']) ? config('static.url_portal_ts3').$item->menu_url : url($item->menu_url) }}"
                         class="nav-link text-dark toggle-menu {{ $isParentActive ? 'activex' : '' }}">
                         <i class="nav-icon material-symbols-rounded" style="font-size: 22px!important;color:#2035d4">{{
                             $item->menu_icon }}</i>
@@ -96,7 +96,7 @@
                         @endphp
                         <li class="nav-item menu-item-has-children ps-2 {{ $isChildActive ? 'menu-is-opening menu-open' : '' }}"
                             id="navItem">
-                            <a href="{{ in_array(config('static.app_env'), ['development', 'production']) ? config('static.url_puninar_app').$subItem->menu_url : url($subItem->menu_url) }}"
+                            <a href="{{ in_array(config('static.app_env'), ['development', 'production']) ? config('static.url_portal_ts3').$subItem->menu_url : url($subItem->menu_url) }}"
                                 class="nav-link text-primary pl-4 {{ $isChildActive ? 'active' : '' }}">
                                 <i class="nav-icon material-symbols-rounded"
                                     style="font-size: 22px!important;color:#2035d4 !important;background-color: #E3EEF0;">

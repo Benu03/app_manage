@@ -33,6 +33,7 @@ class SessionTokenCheck
     public function handle($request, Closure $next)
     {
 
+        date_default_timezone_set('Asia/Jakarta');
         if(config('static.app_env') == 'local')
         {
             return $next($request);

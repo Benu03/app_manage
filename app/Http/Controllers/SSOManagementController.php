@@ -514,17 +514,16 @@ class SSOManagementController extends Controller
     public function users_detail($id)
     {
         $user = DB::table('auth.auth_users')
-                    ->join('auth.auth_personal', 'auth.auth_users.email', '=', 'auth.auth_personal.email')
-                    ->join('auth.auth_type', 'auth.auth_personal.auth_type_id', '=', 'auth.auth_type.id')
-                    ->leftJoin('auth.auth_entity', 'auth.auth_personal.auth_entity_id', '=', 'auth.auth_entity.id')
-                    ->leftJoin('auth.auth_mst_division', 'auth.auth_personal.auth_mst_division_id', '=', 'auth.auth_mst_division.id')
-                    ->leftJoin('auth.auth_mst_department', 'auth.auth_personal.auth_mst_department_id', '=', 'auth.auth_mst_department.id')
-                    ->leftJoin('auth.auth_mst_position', 'auth.auth_personal.auth_mst_position_id', '=', 'auth.auth_mst_position.id')
+                    ->join('auth.auth_type', 'auth.auth_users.auth_type_id', '=', 'auth.auth_type.id')
+                    ->leftJoin('auth.auth_entity', 'auth.auth_users.auth_entity_id', '=', 'auth.auth_entity.id')
+                    ->leftJoin('auth.auth_mst_division', 'auth.auth_users.auth_mst_division_id', '=', 'auth.auth_mst_division.id')
+                    ->leftJoin('auth.auth_mst_department', 'auth.auth_users.auth_mst_department_id', '=', 'auth.auth_mst_department.id')
+                    ->leftJoin('auth.auth_mst_position', 'auth.auth_users.auth_mst_position_id', '=', 'auth.auth_mst_position.id')
                     ->select(
-                        'auth.auth_users.username as username',
+                        // 'auth.auth_users.username as username',
                         'auth.auth_users.id as id_users',
-                        'auth.auth_users.is_active',
-                        'auth.auth_personal.*',
+                        // 'auth.auth_users.is_active',
+                        'auth.auth_users.*',
                         'auth.auth_type.type',
                         'auth.auth_entity.entity',
                         'auth.auth_mst_division.division',
@@ -546,6 +545,7 @@ class SSOManagementController extends Controller
     {
         $errors = [];
 
+       
         if ($request->nik) {
             $cekData = UserAuthPersonal::where('nik', $request->nik)->first();
             if ($cekData) {
@@ -619,9 +619,6 @@ class SSOManagementController extends Controller
                 'is_active'         => $request->status == 'active' ? 1 : 0,
                 'created_by'        => session()->get('user_module')['username'],
                 'created_date'      => now(),
-            ];
-
-            $paramPersonal = [
                 'nik'                   => $request->nik,
                 'fullname'              => $request->fullname,
                 'email'                 => $request->email,
@@ -635,21 +632,15 @@ class SSOManagementController extends Controller
                 'auth_mst_position_id'  => $request->position,
                 'validity_period'       => $request->validity,
                 'valid_till'            => $request->validity == 'Permanent' ? null : $request->validTill,
-                'created_by'            => session()->get('user_module')['username'],
-                'created_date'          => now(),
             ];
 
+           
             UserAuth::create($paramUser);
-            UserPersonal::create($paramPersonal);
+         
 
-            DB::commit();
+            DB::commit();   
 
-            return response()->json([
-                'success'       => true,
-                'message'       => 'Success create user',
-                'redirect_url'  => route('users.index'),
-                'code'          => 200
-            ]);
+         
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json([
@@ -658,11 +649,20 @@ class SSOManagementController extends Controller
                 'code'    => 500
             ]);
         }
+
+        return response()->json([
+            'success'       => true,
+            'message'       => 'Success create user',
+            'redirect_url'  => route('users.index'),
+            'code'          => 200
+        ]);
+        
     }
 
     public function user_edit($id)
     {
         $user = UserAuth::find($id);
+
         $data = [
             'entity'        =>  DB::table('auth.auth_entity')->orderBy('entity', 'asc')->get(),
             'type'          =>  DB::table('auth.auth_type')->orderBy('type', 'asc')->get(),
@@ -678,7 +678,7 @@ class SSOManagementController extends Controller
         $errors = [];
 
         if ($request->nik != $request->nik_old) {
-            $cekData = UserAuthPersonal::where('nik', $request->nik)->first();
+            $cekData = UserAuth::where('nik', $request->nik)->first();
             if ($cekData) {
                 $errors[] = [
                     'tags'    => 'nikError',
@@ -689,7 +689,7 @@ class SSOManagementController extends Controller
         }
 
         if ($request->email != $request->email_old) {
-            $cekData = UserAuthPersonal::where('email', $request->email)->first();
+            $cekData = UserAuth::where('email', $request->email)->first();
             if ($cekData) {
                 $errors[] = [
                     'tags'    => 'emailError',
@@ -700,7 +700,7 @@ class SSOManagementController extends Controller
         }
 
         if ($request->username != $request->username_old) {
-            $cekData = UserAuthPersonal::whereRaw('LOWER(username) = ?', [strtolower($request->username)])->first();
+            $cekData = UserAuth::whereRaw('LOWER(username) = ?', [strtolower($request->username)])->first();
             if ($cekData) {
                 $errors[] = [
                     'tags'    => 'usernameError',
@@ -711,7 +711,7 @@ class SSOManagementController extends Controller
         }
 
         if ($request->phone != $request->phone_old) {
-            $cekData = UserAuthPersonal::where('phone', $request->phone)->first();
+            $cekData = UserAuth::where('phone', $request->phone)->first();
             if ($cekData) {
                 $errors[] = [
                     'tags'    => 'phoneError',
@@ -722,7 +722,7 @@ class SSOManagementController extends Controller
         }
 
         if ($request->whatsapp != $request->whatsapp_old) {
-            $cekData = UserAuthPersonal::where('wa_number', $request->whatsapp)->first();
+            $cekData = UserAuth::where('wa_number', $request->whatsapp)->first();
             if ($cekData) {
                 $errors[] = [
                     'tags'    => 'whatsappError',
@@ -773,8 +773,7 @@ class SSOManagementController extends Controller
             #insert user
             UserAuth::where('id', $request->id)->update($paramUser);
 
-            #insert user Personal
-            UserPersonal::where('id', $request->id_personal)->update($paramPersonal);
+
 
             DB::commit();
             return response()->json([

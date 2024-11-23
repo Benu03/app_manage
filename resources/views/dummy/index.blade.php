@@ -23,8 +23,8 @@
     </ul>
 </div>
 
-<a href="{{ config('static.url_puninar_app').'info' }}">Link ke Info</a>
-<a href="{{ config('static.url_puninar_app').'clean' }}">Clean session</a>
-<a href="{{ config('static.url_puninar_app').'back' }}">Back lobby</a>
+<a href="{{ config('static.url_portal_ts3').'info' }}">Link ke Info</a>
+<a href="{{ config('static.url_portal_ts3').'clean' }}">Clean session</a>
+<a href="{{ config('static.url_portal_ts3').'back' }}">Back lobby</a>
 </body>
 </html>
