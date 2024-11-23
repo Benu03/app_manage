@@ -10,6 +10,25 @@
         transform: scale(0.8);
         color: #525458;
     }
+    /* Default logo styling */
+#logo_wrap {
+    transition: all 0.3s ease;
+    height: 200px; /* Adjust the size as needed */
+    width: auto;
+}
+
+/* When the sidebar is expanded, center the logo */
+.sidebar-expanded #logo_wrap {
+    height: 700px !important;
+    margin: 0 auto; /* Center the logo horizontally */
+}
+
+/* Add a class to the sidebar when it is expanded */
+.sidebar-expanded .brand-link {
+    display: flex;
+    justify-content: center; /* Center the brand-link */
+}
+
 </style>
 
 <aside class="main-sidebar sidebar-light-green">
@@ -120,3 +139,13 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<script>
+    document.querySelector('#sidebar').addEventListener('transitionend', function () {
+    if (document.querySelector('#sidebar').classList.contains('sidebar-expanded')) {
+        document.querySelector('#sidebar').classList.remove('sidebar-expanded');
+    } else {
+        document.querySelector('#sidebar').classList.add('sidebar-expanded');
+    }
+});
+</script>
