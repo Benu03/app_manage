@@ -142,33 +142,7 @@
                         <img src="{{ asset('img/dashboard-img/Modules.png') }}" alt="">
                     </a>
                 </div>
-                {{-- <div class="col-lg-2 col-md-3 col-sm-6 col-12 box-dashboard">
-                    <a href="{{ route('mobile-management.index') }}" class="small-box">
-                        <div>
-                            <p style="margin-bottom: 0px;">Mobile Apps</p>
-                            <h3>{{ $data['mobile_apps'] }}</h3>
-                        </div>
-                        <img src="{{ asset('img/dashboard-img/Apps.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-6 col-12 box-dashboard">
-                    <a href="{{ route('web-management.index') }}" class="small-box">
-                        <div>
-                            <p style="margin-bottom: 0px;">Web Apps</p>
-                            <h3>{{ $data['web_apps'] }}</h3>
-                        </div>
-                        <img src="{{ asset('img/dashboard-img/web-apps.png') }}" alt="">
-                    </a>
-                </div> --}}
-                <div class="col-lg-2 col-md-3 col-sm-6 col-12 box-dashboard">
-                    <a href="{{ route('apk.index') }}" class="small-box">
-                        <div>
-                            <p style="margin-bottom: 0px;">APK version</p>
-                            <h3>{{ $data['apk'] }}</h3>
-                        </div>
-                        <img src="{{ asset('img/dashboard-img/apk.png') }}" alt="">
-                    </a>
-                </div>
+
             </div>
             
         </div>
