@@ -10,34 +10,40 @@
         transform: scale(0.8);
         color: #525458;
     }
-    /* Default logo styling */
-#logo_wrap {
+
+    #logo_wrap {
     transition: all 0.3s ease;
-    height: 200px; /* Adjust the size as needed */
-    width: auto;
+    height: 80px; /* Default ukuran logo */
+    width: auto; /* Mempertahankan proporsi */
+   
 }
 
-/* When the sidebar is expanded, center the logo */
+/* Ketika sidebar diperbesar */
 .sidebar-expanded #logo_wrap {
-    height: 700px !important;
-    margin: 0 auto; /* Center the logo horizontally */
+    height: 500px !important; /* Ukuran diperbesar */
+    width: auto; /* Memastikan proporsi tetap */
+    margin: 0 auto; /* Centering */
 }
 
-/* Add a class to the sidebar when it is expanded */
+/* Penyesuaian tambahan */
 .sidebar-expanded .brand-link {
     display: flex;
-    justify-content: center; /* Center the brand-link */
+    justify-content: center; /* Pusatkan konten */
 }
 
 </style>
 
 <aside class="main-sidebar sidebar-light-green">
     <!-- Brand Logo -->
-    <a href="{{ route('lobby') }}" class="brand-link py-0 mt-2 ml-2" id="link">
+    {{-- <a href="{{ route('lobby') }}" class="brand-link py-0 mt-2 ml-2" id="link">
         <img id="logo_wrap" alt="APP Manage" class="brand-image-xl py-1" src="{{ asset('img/logo/logo.png') }}"
             style="height:700px !important;">
-    </a>
-    <hr>
+    </a> --}}
+
+    <a href="{{ route('lobby') }}" class="brand-link d-flex flex-column align-items-center" >
+        <img id="logo_wrap" alt="APP Manage" class="py-1" src="{{ asset('img/logo/logo.png') }}" >
+       
+      </a>
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
         <!-- Sidebar Menu -->
